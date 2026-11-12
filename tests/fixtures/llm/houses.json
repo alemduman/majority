@@ -1,0 +1,5 @@
+{"kind": "search", "match": "выдуманн",
+ "response": {"found": false, "candidates": [],
+  "similar": [{"question_ru": "Дом у моря или в горах?", "source_hint": "YouGov"},
+              {"question_ru": "Квартира в центре или дом за городом?", "source_hint": "Ipsos"},
+              {"question_ru": "Жить в большом городе или в маленьком?", "source_hint": "Gallup"}]}}

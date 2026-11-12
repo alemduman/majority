@@ -1,0 +1,61 @@
+name: research
+# Этап 1: поиск первоисточника и карточка факта. Платит только за Gemini с поиском (лимит в config.json → research.budgetUsd).
+on:
+  workflow_dispatch:
+    inputs:
+      questions:
+        description: "Вопросы, по одному на строку"
+        required: true
+      options:
+        description: "Варианты через | (необязательно)"
+        required: false
+        default: ""
+      mode:
+        description: "research или suggest"
+        required: false
+        default: research
+concurrency:
+  group: majority-db
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Проверка ключа
+        run: |
+          if [ -z "$GEMINI_API_KEY" ]; then echo "::error::Нет секрета GEMINI_API_KEY"; exit 1; fi
+      - name: Исследование
+        env:
+          QUESTIONS: ${{ inputs.questions }}
+          OPTIONS: ${{ inputs.options }}
+          MODE: ${{ inputs.mode }}
+        run: |
+          if [ "$MODE" = "suggest" ]; then
+            python -m majority suggest -n "${QUESTIONS:-5}" | tee -a "$GITHUB_STEP_SUMMARY"
+          else
+            mapfile -t QS < <(printf '%s\n' "$QUESTIONS" | sed '/^\s*$/d')
+            ARGS=()
+            [ -n "$OPTIONS" ] && ARGS+=(--options "$OPTIONS")
+            python -m majority research "${QS[@]}" "${ARGS[@]}" --summary "$GITHUB_STEP_SUMMARY"
+          fi
+          python -m majority costs
+      - name: Сохранить базу и карточки
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f data/majority.sqlite output/cards 2>/dev/null || true
+          git diff --cached --quiet && exit 0
+          git commit -m "research: карточки и база"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done

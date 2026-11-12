@@ -1,0 +1,8 @@
+{"kind": "search", "match": "Кошки или собаки",
+ "response": {"found": true, "candidates": [{
+   "organization": "Blog", "year": 2024, "sample_size": 0, "countries": 30, "scope_ru": "в мире",
+   "survey_wording": "Dogs or cats?", "metric": "single", "source_url": "https://blog.example.com/cats-dogs",
+   "source_short_ru": "блог", "options": [
+     {"source_label": "Dogs", "label_ru": "Собаки", "percent": 91, "quote": "Dogs 91%"},
+     {"source_label": "Cats", "label_ru": "Кошки", "percent": 9, "quote": "cats 9%"}]}],
+  "similar": [{"question_ru": "Утро или вечер?", "source_hint": "YouGov"}]}}

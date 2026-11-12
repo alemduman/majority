@@ -1,0 +1,41 @@
+name: approve
+# Подтверждение карточки человеком. Запускать только по решению владельца.
+on:
+  workflow_dispatch:
+    inputs:
+      card:
+        description: "Номер карточки"
+        required: true
+      decision:
+        description: "approve или reject"
+        required: true
+        default: approve
+concurrency:
+  group: majority-db
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  approve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Решение
+        env:
+          CARD: ${{ inputs.card }}
+          DECISION: ${{ inputs.decision }}
+        run: |
+          if [ "$DECISION" = "reject" ]; then python -m majority approve "$CARD" --reject
+          else python -m majority approve "$CARD" --yes; fi
+      - name: Сохранить
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f data/majority.sqlite output/cards
+          git diff --cached --quiet && exit 0
+          git commit -m "approve: карточка ${{ inputs.card }} — ${{ inputs.decision }}"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done

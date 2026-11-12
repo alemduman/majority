@@ -1,0 +1,8 @@
+{"kind": "search", "match": "Чай или кофе \\(тест неверной цифры\\)",
+ "response": {"found": true, "candidates": [{
+   "organization": "YouGov", "year": 2023, "sample_size": 2000, "countries": 1, "scope_ru": "Великобритания",
+   "survey_wording": "Which do you prefer, tea or coffee?", "metric": "single",
+   "source_url": "https://today.yougov.com/fixture/tea-coffee", "behavior": false, "source_short_ru": "YouGov, Великобритания, 2023",
+   "explanation_ru": "", "options": [
+     {"source_label": "Coffee", "label_ru": "Кофе", "percent": 64, "quote": "Coffee 64%"},
+     {"source_label": "Tea", "label_ru": "Чай", "percent": 30, "quote": "Tea 30%"}]}], "similar": []}}

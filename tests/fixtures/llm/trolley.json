@@ -1,0 +1,12 @@
+{"kind": "search", "match": "Вагонетк",
+ "sources": ["https://www.pnas.org/doi/10.1073/pnas.1911517117"],
+ "response": {"found": true, "candidates": [{
+   "organization": "Awad et al. (Moral Machine)", "publication": "PNAS", "year": 2020, "sample_size": 70000, "countries": 42,
+   "scope_ru": "42 страны", "survey_wording": "Switch dilemma: is it acceptable to divert the trolley so that it kills one person instead of five?",
+   "metric": "single", "source_url": "https://www.pnas.org/doi/10.1073/pnas.1911517117", "doi": "10.1073/pnas.1911517117",
+   "behavior": false, "source_short_ru": "PNAS, 42 страны, 2020", "explanation_ru": "Пожертвовать одним ради пятерых готовы почти везде",
+   "options": [
+     {"source_label": "Switch acceptable", "label_ru": "Перевести", "percent": 81,
+      "quote": "sacrificing one person to save five was considered acceptable in the Switch dilemma by 81% of participants on average", "derived": ""},
+     {"source_label": "not acceptable", "label_ru": "Не вмешиваться", "percent": 19, "quote": "", "derived": "complement"}],
+   "notes": ""}], "similar": []}}

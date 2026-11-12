@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+data/pages/
+output/*
+!output/cards/
+cache/
+*.mp4
+!tests/fixtures/**

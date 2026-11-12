@@ -1,0 +1,126 @@
+{
+  "_comment": "Настройки «Что выберешь ты». Ключи API сюда НЕ писать — только в переменные окружения / секреты GitHub.",
+  "language": "ru",
+  "voice": {
+    "engine": "gemini",
+    "name": "Charon"
+  },
+  "font": "fonts/Montserrat-Black.ttf",
+  "colors": {
+    "bg": "#0E1020",
+    "accent": "#FFD93B",
+    "text": "#FFFFFF",
+    "bar": "#3DDC97",
+    "barOther": "#5A6275"
+  },
+  "durations": {
+    "question": 2.0,
+    "option": 2.5,
+    "countdown": 2.0,
+    "reveal": 5.0,
+    "outro": 2.0
+  },
+  "budget": {
+    "ceilingUsd": 0.5,
+    "targetUsd": 0.3,
+    "maxRegenerationsPerImage": 2
+  },
+  "approvalMode": "manual",
+  "prices": {
+    "llm": {
+      "gemini-2.5-flash": {
+        "inputPer1M": 0.3,
+        "outputPer1M": 2.5,
+        "searchPerCall": 0.035
+      }
+    },
+    "imagePerUnit": {
+      "gemini-2.5-flash-image": 0.039
+    },
+    "ttsPer1000Chars": {
+      "gemini": 0.02,
+      "edge": 0.0,
+      "mock": 0.0
+    },
+    "videoPerSecond": {
+      "none": 0.0
+    }
+  },
+  "llmModel": "gemini-2.5-flash",
+  "research": {
+    "maxCandidates": 4,
+    "maxPageChars": 60000,
+    "budgetUsd": 0.12,
+    "conflictPolicy": "C",
+    "expectedOutTokens": 6000
+  },
+  "primarySources": [
+    "yougov.com",
+    "today.yougov.com",
+    "business.yougov.com",
+    "pewresearch.org",
+    "ipsos.com",
+    "gallup.com",
+    "news.gallup.com",
+    "pnas.org",
+    "nature.com",
+    "science.org",
+    "sciencedirect.com",
+    "springer.com",
+    "wiley.com",
+    "plos.org",
+    "ncbi.nlm.nih.gov",
+    "europepmc.org",
+    "statista.com",
+    "gfk.com",
+    "nim.org",
+    "oecd.org",
+    "europa.eu",
+    "who.int",
+    "worldvaluessurvey.org",
+    "doi.org",
+    "jstor.org",
+    "cambridge.org",
+    "oup.com",
+    "ebi.ac.uk",
+    "sagepub.com",
+    "tandfonline.com",
+    "frontiersin.org",
+    "mdpi.com",
+    "arxiv.org",
+    "osf.io"
+  ],
+  "blockedTopics": [
+    "политик",
+    "выбор(?:ы|ах|ов)\\b",
+    "парти[яи]",
+    "президент",
+    "религи",
+    "\\bбог",
+    "церк",
+    "мечет",
+    "болезн",
+    "лекарств",
+    "вакцин",
+    "медиц",
+    "смерт",
+    "убийств",
+    "теракт",
+    "катастроф",
+    "войн",
+    "секс",
+    "алкогол",
+    "наркот",
+    "politic",
+    "election",
+    "religio",
+    "\\bgod\\b",
+    "vaccin",
+    "disease",
+    "medic",
+    "\\bdrug",
+    "\\bsex",
+    "terror",
+    "\\bwar\\b"
+  ]
+}
