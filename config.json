@@ -122,5 +122,11 @@
     "\\bsex",
     "terror",
     "\\bwar\\b"
-  ]
+  ],
+  "safeZone": {
+    "top": 270,
+    "bottom": 1440,
+    "left": 65,
+    "right": 130
+  }
 }

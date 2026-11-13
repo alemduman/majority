@@ -10,6 +10,8 @@ DEFAULTS = {
     "voice": {"engine": "gemini", "name": "Charon"},
     "font": "fonts/Montserrat-Black.ttf",
     "colors": {"bg": "#0E1020", "accent": "#FFD93B", "text": "#FFFFFF", "bar": "#3DDC97", "barOther": "#5A6275"},
+    # безопасная зона 1080×1920 (Reels/TikTok): сверху шапка ~14%, снизу подпись и ник ~25%, справа кнопки ~12%
+    "safeZone": {"top": 270, "bottom": 1440, "left": 65, "right": 130},
     "durations": {"question": 2.0, "option": 2.5, "countdown": 2.0, "reveal": 5.0, "outro": 2.0},
     "budget": {"ceilingUsd": 0.50, "targetUsd": 0.30, "maxRegenerationsPerImage": 2},
     "approvalMode": "manual",
